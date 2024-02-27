@@ -32,7 +32,31 @@ class Player:
     
     def say_hand(self):
         print(self.hand)
-   
+
+class Game:
+    deck = None
+    river = set()
+    pot = 0
+
+    def __init__(self):
+        self.deck = Deck()
+        
+        self.flop = self.deck.get_card()
+        self.turn = self.deck.get_card()
+    
+    def deal_river(self):
+        print("Dealing river:")
+        for i in range(0,3):
+            self.card = self.deck.get_card()
+            self.river.add(self.card)
+            print("  {} of {}".format(self.card.value,self.card.suit))
+
+game = Game()
+# game.add_players(players)
+game.deal_river()
+
+
+"""
 players = set()
 p_name = ""
 while p_name != "s":
@@ -41,7 +65,4 @@ while p_name != "s":
         players.add(Player(p_name))
 
 print("There are {} players".format(len(players)))
-
-
-    
-
+"""
